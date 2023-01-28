@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """
-Contains the is_kind_of_class function
+Contains a certain inherits_from function
 """
-
-
-def is_kind_of_class(obj, a_class):
-    """True if obj is an instance or inherited from a_class, else False"""
-    return (isinstance(obj, a_class))
-  
+def inherits_from(obj, a_class):
+    """A functtion that returns True only if object(obj) is a sub-class or instance of a sub-class of a class(a_class), otherwise False"""
+    return (issubclass(obj, a_class) and type(obj)!=a_class)
