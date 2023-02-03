@@ -7,4 +7,4 @@ import json
 def class_to_json(obj):
     """ Function that returns the dictionary description of an obj """
 
-    return json.dumps(obj.__dict__)
+    return json.loads(obj.__dict__)
