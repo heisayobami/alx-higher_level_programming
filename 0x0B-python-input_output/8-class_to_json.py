@@ -6,5 +6,7 @@ import json
 
 def class_to_json(obj):
     """ Function that returns the dictionary description of an obj """
-
-    return json.loads(obj.__dict__)
+    result = {}
+    if hasattr(obj, "__dict__"):
+    result = obj.__dict__.copy()
+    return result
