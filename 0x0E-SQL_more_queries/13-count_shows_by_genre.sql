@@ -8,7 +8,7 @@
 -- The database name is passed as an argument of the mysql command
 
 SELECT
-	tg.name AS genre,
+  tg.name AS genre,
   COUNT(tg.id) AS number_of_shows
 FROM tv_genres tg 
 INNER JOIN tv_show_genres tsg 
