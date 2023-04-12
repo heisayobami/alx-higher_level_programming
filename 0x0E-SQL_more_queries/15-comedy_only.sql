@@ -1,15 +1,16 @@
 -- lists all Comedy shows in the database hbtn_0d_tvshows.
 -- The tv_genres table contains only one record where name = Comedy (but the id can be different)
--- Each record should display: tv_shows.title
--- Results must be sorted in ascending order by the show title
--- You can use only one SELECT statement
--- The database name will be passed as an argument of the mysql command
+-- Each record displays: tv_shows.title
+-- Results is sorted in ascending order by the show title
+-- Only one SELECT statement is allowed
+-- The database name is passed as an argument of the mysql command
 
-SELECT tv_shows.title
-FROM tv_shows
-INNER JOIN tv_show_genres
-ON tv_shows.id = tv_show_genres.show_id
-INNER JOIN tv_genres
-ON tv_show_genres.genre_id = tv_genres.id
-WHERE tv_genres.name = "Comedy"
-ORDER BY tv_shows.title;
+SELECT
+  ts.title
+FROM tv_genres tg
+JOIN tv_show_genres tsg 
+  ON tg.id = tsg.genre_id
+JOIN tv_shows ts
+  ON tsg.show_id = ts.id
+WHERE tg.name = "Comedy"
+ORDER BY ts.title;
