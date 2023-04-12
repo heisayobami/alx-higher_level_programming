@@ -1,18 +1,20 @@
 -- list all genres not linked to the show Dexter
 -- The tv_shows table contains only one record where title = Dexter (but the id can be different)
--- Each record should display: tv_genres.name
--- Results must be sorted in ascending order by the genre name
--- You can use a maximum of two SELECT statement
--- The database name will be passed as an argument of the mysql command
+-- Each record displays: tv_genres.name
+-- Results are sorted in ascending order by the genre name
+-- A maximum of two SELECT statement is allowed
+-- The database name is passed as an argument of the mysql command
 
-SELECT tv_genres.name
-FROM tv_genres
-WHERE tv_genres.id NOT IN
-(SELECT tv_genres.id
-FROM tv_genres
-INNER JOIN tv_show_genres
-ON tv_genres.id = tv_show_genres.genre_id
-INNER JOIN tv_shows
-ON tv_show_genres.show_id = tv_shows.id
-WHERE tv_shows.title = "Dexter")
-ORDER BY tv_genres.name;
+SELECT
+	tg.name
+FROM tv_genres tg
+WHERE tg.id NOT IN
+					(SELECT 
+						tg.id
+					FROM tv_genres tg
+					JOIN tv_show_genres tsg 
+					  ON tg.id = tsg.genre_id
+					JOIN tv_shows ts
+					  ON tsg.show_id = ts.id
+					WHERE ts.title = "Dexter")
+ORDER BY tg.name;
