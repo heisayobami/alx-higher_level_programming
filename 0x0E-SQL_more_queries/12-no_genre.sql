@@ -1,12 +1,14 @@
--- lists all shows contained in hbtn_0d_tvshows without a genre linked.
+--  lists all shows contained in hbtn_0d_tvshows that have at least one genre linked.
 -- Each record should display: tv_shows.title - tv_show_genres.genre_id
--- Results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id
--- You can use only one SELECT statement
--- The database name will be passed as an argument of the mysql command
+-- Results are sorted in ascending order by tv_shows.title and tv_show_genres.genre_id
+-- Only one SELECT statement is allowed
+-- The database name is passed as an argument of the mysql command
 
-SELECT tv_shows.title, tv_show_genres.genre_id
-FROM tv_shows
-LEFT JOIN tv_show_genres
-ON tv_shows.id=tv_show_genres.show_id
-WHERE tv_show_genres.show_id IS NULL
-ORDER BY tv_shows.title, tv_show_genres.genre_id;
+SELECT 
+      ts.title,
+      tsg.genre_id
+FROM tv_shows ts
+LEFT JOIN tv_show_genres tsg
+    ON ts.id = tsg.show_id
+WHERE tsg.show_id IS NULL
+ORDER BY ts.title, tsg.genre_id;
